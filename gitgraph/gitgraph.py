@@ -2,7 +2,7 @@
 from git import Repo
 import datetime
 
-repo = Repo("/home/jmiotte/conf_files")
+repo = Repo(".")
 current_day = 0
 current_month = 0
 current_year = 0
