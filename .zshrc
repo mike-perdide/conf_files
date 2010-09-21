@@ -145,7 +145,7 @@ function rprompt {
     RPROMPT="${PR_RESET}${bracket_open}${inner}${bracket_close}${PR_RESET}"
 }
 
-lprompt '' $BR_BRIGHT_BLACK $PR_BLUE
+lprompt '[]' $BR_BRIGHT_BLACK $PR_BLUE
 rprompt '()' $BR_BRIGHT_BLACK $PR_GREEN
 # PS1 and PS2
 #export  PS1="$(print '%{\e[1;34m%}%m%{\e[0m%}').$(print '%{\e[0;34m%}%~%{\e[0m%}')$(__prompt_git)%# "
