@@ -64,15 +64,6 @@ export PYTHONPATH=$PYTHONPATH:$HOME/opt
 export WORKON_HOME=$HOME/.virtualenvs
 source $HOME/opt/virtualenvwrapper.sh
 
-
-virtdeact () {
-	zle -I
-    deactivate;
-	print "Deactivating ..."
-#    zle reset-prompt
-}
-zle -N virtdeact
-
 # key bindings
 typeset -g -A key
 bindkey '^?' backward-delete-char
@@ -85,36 +76,6 @@ bindkey '^[[D' backward-char
 bindkey '^[[C' forward-char 
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
-
-virtdeact () {
-	zle -I
-    deactivate;
-	print "Deactivating ..."
-#    zle reset-prompt
-}
-zle -N virtdeact
-
-#my_prog (){
-#	echo $1
-#	source $HOME/activation_ctrl_d
-#}
-
-
-
-#source $HOME/activation_ctrl_d
-#widg1() {
-#	zle -I
-#	setopt ignoreeof
-#	bindkey "^D" widg0
-#}
-#widg2() {
-#	zle -I
-#	unsetopt ignoreeof
-#	bindkey -r "^D"
-#}
-#
-#zle -N widg1
-#zle -N widg2
 
 setopt prompt_subst
 autoload colors   
@@ -188,3 +149,13 @@ rprompt '()' $BR_BRIGHT_BLACK $PR_WHITE
 #export  PS1="$(print '%{\e[1;34m%}%m%{\e[0m%}').$(print '%{\e[0;34m%}%~%{\e[0m%}')$(__prompt_git)%# "
 #export RPS1="$(print '%{\e[1;32m%}[%T]%{\e[0m%}')"
 #export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
+
+# PS1 and PS2
+#local hostname="%{\e[0;35m%}%m%{\e[0m%}" 
+#local _path="%{\e[1;34m%}%~%{\e[0m%}"
+#local time="%{\e[1;32m%}[%T]%{\e[0m%}"
+#
+#export  PS1="$(print "%{\e[1;32m%}$(git_branch)%{\e[1m%}"${hostname}).$(print ${_path})%# "
+#export RPS1="$(print ${time})"
+#export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
+
