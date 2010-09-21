@@ -83,7 +83,7 @@ colors
  
 autoload -Uz vcs_info
 # set some colors
-for COLOR in RED GREEN YELLOW WHITE BLACK CYAN; do
+for COLOR in RED GREEN YELLOW MAGENTA WHITE BLACK CYAN; do
     eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'        
     eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
 done                                                
@@ -104,12 +104,12 @@ FMT_PATH="%R${PR_YELLOW}/%S"              # e.g. ~/repo/subdir
 zstyle ':vcs_info:*:prompt:*' check-for-changes true
 zstyle ':vcs_info:*:prompt:*' unstagedstr '¹'  # display ¹ if there are unstaged changes
 zstyle ':vcs_info:*:prompt:*' stagedstr '²'    # display ² if there are staged changes
-zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}//" "${FMT_PATH}"
-zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}//"              "${FMT_PATH}"
+zstyle ':vcs_info:*:prompt:*' actionformats "//${FMT_BRANCH}${FMT_ACTION}" "${FMT_PATH}"
+zstyle ':vcs_info:*:prompt:*' formats       "//${FMT_BRANCH}"              "${FMT_PATH}"
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"        
 
-function precmd {      
-    vcs_info 'prompt'         
+function precmd {  
+    vcs_info 'prompt'   
 }
 function lprompt {
     local brackets=$1
@@ -118,11 +118,13 @@ function lprompt {
     
     local bracket_open="${color1}${brackets[1]}${PR_RESET}"
     local bracket_close="${color1}${brackets[2]}"         
+
+    local host="${PR_BRIGHT_YELLOW}%m${PR_RESET}"                   
     
     local git='$vcs_info_msg_0_'                          
-    local cwd="${color2}%B%1~%b"
+    local cwd="${PR_CYAN}%B%1~%b"
     
-    PROMPT="${PR_RESET}${bracket_open}${git}${cwd}${bracket_close}%# ${PR_RESET}"
+    PROMPT="${PR_RESET}${bracket_open}${host}.${cwd}${git}${bracket_close}%# ${PR_RESET}"
 }                                                                                       
 
 function rprompt {
@@ -133,18 +135,18 @@ function rprompt {
     local bracket_open="${color1}${brackets[1]}${PR_RESET}"
     local bracket_close="${color1}${brackets[2]}${PR_RESET}"
     local colon="${color1}:"                               
-    local at="${color1}@${PR_RESET}"                       
+    local at="${color1}@${PR_RESET}"
+    local time="${color1}%T${PR_RESET}"
     
-    local user_host="${color2}%n${at}${color2}%m"                   
     local vcs_cwd='${${vcs_info_msg_1_%%.}/$HOME/~}'       
     local cwd="${color2}%B%20<..<${vcs_cwd}%<<%b"
-    local inner="${user_host}${colon}${cwd}"
+    local inner="${time}${colon}${cwd}"
     
     RPROMPT="${PR_RESET}${bracket_open}${inner}${bracket_close}${PR_RESET}"
 }
 
-lprompt '[]' $BR_BRIGHT_BLACK $PR_WHITE
-rprompt '()' $BR_BRIGHT_BLACK $PR_WHITE
+lprompt '' $BR_BRIGHT_BLACK $PR_BLUE
+rprompt '()' $BR_BRIGHT_BLACK $PR_GREEN
 # PS1 and PS2
 #export  PS1="$(print '%{\e[1;34m%}%m%{\e[0m%}').$(print '%{\e[0;34m%}%~%{\e[0m%}')$(__prompt_git)%# "
 #export RPS1="$(print '%{\e[1;32m%}[%T]%{\e[0m%}')"
