@@ -1,0 +1,12 @@
+[user]
+	email = jmiotte@edenwall.com
+	mail = jmiotte@edenwall.com
+[core]
+    editor = vim
+    pager = most
+[color]
+    diff = auto
+[alias]
+    pull = pull --rebase
+    ci = commit -v
+    commit = commit -v
