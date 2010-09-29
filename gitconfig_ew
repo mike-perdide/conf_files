@@ -1,12 +1,11 @@
 [user]
+    name = Julien Miotte
 	email = jmiotte@edenwall.com
-	mail = jmiotte@edenwall.com
 [core]
     editor = vim
     pager = most
 [color]
     diff = auto
 [alias]
-    pull = pull --rebase
+    pullrebase = pull --rebase
     ci = commit -v
-    commit = commit -v
