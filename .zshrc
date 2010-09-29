@@ -60,7 +60,7 @@ alias -g L='|less'
 
 # environment settings
 export PATH=$PATH:$HOME/opt
-export PYTHONPATH=$PYTHONPATH:$HOME/opt
+export PYTHONPATH=$HOME/opt:$HOME/sources/git/nufw-nss-daemon:$PYTHONPATH
 export WORKON_HOME=$HOME/.virtualenvs
 source $HOME/opt/virtualenvwrapper.sh
 
@@ -73,21 +73,21 @@ bindkey '^[[3~' delete-char
 bindkey '^[[4~' end-of-line
 bindkey '^[[6~' down-line-or-history
 bindkey '^[[D' backward-char
-bindkey '^[[C' forward-char 
+bindkey '^[[C' forward-char
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 setopt prompt_subst
-autoload colors   
-colors            
- 
+autoload colors
+colors
+
 autoload -Uz vcs_info
 # set some colors
 for COLOR in RED GREEN YELLOW MAGENTA WHITE BLACK CYAN; do
-    eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'        
+    eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'
     eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
-done                                                
-PR_RESET="%{${reset_color}%}"; 
+done
+PR_RESET="%{${reset_color}%}";
 # set formats
 # # %b - branchname
 # # %u - unstagedstr (see below)
@@ -98,50 +98,50 @@ PR_RESET="%{${reset_color}%}";
 FMT_BRANCH="${PR_GREEN}%b%u%c${PR_RESET}" # e.g. master¹²
 FMT_ACTION="(${PR_CYAN}%a${PR_RESET}%)"   # e.g. (rebase-i)
 FMT_PATH="%R${PR_YELLOW}/%S"              # e.g. ~/repo/subdir
- 
+
 # check-for-changes can be really slow.
-# you should disable it, if you work with large repositories   
+# you should disable it, if you work with large repositories
 zstyle ':vcs_info:*:prompt:*' check-for-changes true
 zstyle ':vcs_info:*:prompt:*' unstagedstr '¹'  # display ¹ if there are unstaged changes
 zstyle ':vcs_info:*:prompt:*' stagedstr '²'    # display ² if there are staged changes
 zstyle ':vcs_info:*:prompt:*' actionformats "//${FMT_BRANCH}${FMT_ACTION}" "${FMT_PATH}"
 zstyle ':vcs_info:*:prompt:*' formats       "//${FMT_BRANCH}"              "${FMT_PATH}"
-zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"        
+zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"
 
-function precmd {  
-    vcs_info 'prompt'   
+function precmd {
+    vcs_info 'prompt'
 }
 function lprompt {
     local brackets=$1
-    local color1=$2 
-    local color2=$3 
-    
-    local bracket_open="${color1}${brackets[1]}${PR_RESET}"
-    local bracket_close="${color1}${brackets[2]}"         
+    local color1=$2
+    local color2=$3
 
-    local host="${PR_BRIGHT_YELLOW}%m${PR_RESET}"                   
-    
-    local git='$vcs_info_msg_0_'                          
+    local bracket_open="${color1}${brackets[1]}${PR_RESET}"
+    local bracket_close="${color1}${brackets[2]}"
+
+    local host="${PR_YELLOW}%m${PR_RESET}"
+
+    local git='$vcs_info_msg_0_'
     local cwd="${PR_CYAN}%B%1~%b"
-    
+
     PROMPT="${PR_RESET}${bracket_open}${host}.${cwd}${git}${bracket_close}%# ${PR_RESET}"
-}                                                                                       
+}
 
 function rprompt {
     local brackets=$1
-    local color1=$2 
-    local color2=$3 
-    
+    local color1=$2
+    local color2=$3
+
     local bracket_open="${color1}${brackets[1]}${PR_RESET}"
     local bracket_close="${color1}${brackets[2]}${PR_RESET}"
-    local colon="${color1}:"                               
+    local colon="${color1}:"
     local at="${color1}@${PR_RESET}"
     local time="${color1}%T${PR_RESET}"
-    
-    local vcs_cwd='${${vcs_info_msg_1_%%.}/$HOME/~}'       
+
+    local vcs_cwd='${${vcs_info_msg_1_%%.}/$HOME/~}'
     local cwd="${color2}%B%20<..<${vcs_cwd}%<<%b"
     local inner="${time}${colon}${cwd}"
-    
+
     RPROMPT="${PR_RESET}${bracket_open}${inner}${bracket_close}${PR_RESET}"
 }
 
@@ -153,7 +153,7 @@ rprompt '()' $BR_BRIGHT_BLACK $PR_GREEN
 #export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
 
 # PS1 and PS2
-#local hostname="%{\e[0;35m%}%m%{\e[0m%}" 
+#local hostname="%{\e[0;35m%}%m%{\e[0m%}"
 #local _path="%{\e[1;34m%}%~%{\e[0m%}"
 #local time="%{\e[1;32m%}[%T]%{\e[0m%}"
 #
