@@ -1,0 +1,19 @@
+[user]
+    email = mike.perdide@gmail.com
+    name = Mike Perdide
+[core]
+    editor = vim
+    pager = most
+[color]
+    diff = auto
+    pager = true
+    ui = auto
+[alias]
+    pullrebase = pull --rebase
+    ci = commit -v
+    wu = log --stat origin..@{0}
+    st = status
+    up = pull --rebase
+    co = checkout
+[merge]
+    tool = vimdiff
