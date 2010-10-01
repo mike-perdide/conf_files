@@ -1,14 +1,19 @@
 [user]
     name = Julien Miotte
-	email = jmiotte@edenwall.com
+    email = jmiotte@edenwall.com
 [core]
     editor = vim
     pager = most
 [color]
     diff = auto
+    pager = true
+    ui = auto
 [alias]
     pullrebase = pull --rebase
     ci = commit -v
-	wu = log --stat origin..@{0}
-	st = status
-	up = pull --rebase
+    wu = log --stat origin..@{0}
+    st = status
+    up = pull --rebase
+    co = checkout
+[merge]
+    tool = vimdiff
