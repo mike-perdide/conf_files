@@ -1,0 +1,54 @@
+! Zenburn colortheme for URxvt
+URxvt*background:     #303030
+URxvt*foreground:     #dcdccc
+URxvt*cursorColor:    #cdc092
+!black
+URxvt*color0:         #111111
+!red
+URxvt*color1:         #705050
+!grÆ
+URxvt*color2:         #60b48a
+!yellow
+URxvt*color3:         #dfaf8f
+!blue
+URxvt*color4:         #506070
+!purple
+URxvt*color5:         #dc8cc3
+!cyan
+URxvt*color6:         #8cd0d3
+!white
+URxvt*color7:         #dcdccc
+!bright-black
+URxvt*color8:         #709080
+!bright-red
+URxvt*color9:         #dca3a3
+!bright-green
+URxvt*color10:        #c3bf9f
+!bright-yellow
+URxvt*color11:        #f0dfaf
+!bright-blue
+URxvt*color12:        #94bff3
+!bright-purple
+URxvt*color13:        #ec93d3
+!bright-cyan
+URxvt*color14:        #93e0e3
+!bright-white
+URxvt*color15:        #ffffff
+
+
+! Nice for manpages
+!URxvt*underLine:           on
+!URxvt*colorMode:           on
+URxvt*colorBD:              lightyellow
+!URxvt*colorBDMode:         off
+URxvt*colorUL:              #8cd0d3
+!URxvt*colorULMode:         on
+
+URxvt*dynamicColors:        on
+URxvt*highlightSelection:   true
+! URxvt*keysym*: ""
+URxvt*scrollBar:false
+
+URxvt*scrollTtyOutput:false
+URxvt*scrollWithBuffer:true
+URxvt.font:             xft:Deja Vu Sans Mono:pixelsize=13:antialias=false
