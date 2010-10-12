@@ -124,3 +124,7 @@ autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~
 
 :colorscheme delek
 " ron, slatea, torte
+
+set wildchar=<Tab> wildmenu wildmode=full
+set wildcharm=<C-Z>
+nnoremap <F10> :b <C-Z>
