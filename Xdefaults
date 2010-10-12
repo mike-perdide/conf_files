@@ -1,5 +1,42 @@
-! Zenburn colortheme for URxvt
-URxvt*background:     #303030
+!#define FONT       -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
+!#define FONT_BOLD  -*-lucidatypewriter-bold-*-*-*-12-*-*-*-*-*-*-*
+!#include "/home/mike/.xrdb/look-zenburn.xrdb"
+!#include "/home/mike/.xrdb/xterm.xrdb"
+!xterm*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
+!xterm*faceName: terminus-18
+!!xterm*faceName: Police-14
+!!xterm*background: black
+!!xterm*foreground: LightYellow
+!xterm*scrollBar:false
+!!!XTerm*bellIsUrgent: true
+!!!xterm*faceSize:8
+!Xcursor.theme: neutral
+
+!!URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
+Rxvt*font: xft:terminus-18:pixelsize=18
+!URxvt*boldFont: xft:Monaco:pixelsize=10
+
+URxvt.geometry: 80x25
+! URxvt.font: xft:DejaVu Sans Mono:pixelsize=9
+!URxvt*inheritPixmap: true
+URxvt*tintColor: gray30
+URxvt.internalBorder: 0
+URxvt.jumpScroll: true
+! URxvt.loginShell: true
+URxvt.perl-ext-common: default,matcher,searchable-scrollback
+URxvt.pointerBlank: true
+URxvt.saveLines: 4000
+URxvt.secondaryScroll: true
+URxvt.scrollBar: false
+URxvt.scrollTtyKeypress: true
+URxvt.scrollWithBuffer: true
+URxvt*urlLauncher: /usr/bin/firefox
+
+URxvt*cursorColor: #ffffff
+URxvt*colorUL: #c5f779
+URxvt*underlineColor: #c5f779
+
+URxvt*background:     #3f3f3f
 URxvt*foreground:     #dcdccc
 URxvt*cursorColor:    #cdc092
 !black
@@ -35,7 +72,6 @@ URxvt*color14:        #93e0e3
 !bright-white
 URxvt*color15:        #ffffff
 
-
 ! Nice for manpages
 !URxvt*underLine:           on
 !URxvt*colorMode:           on
@@ -51,4 +87,4 @@ URxvt*scrollBar:false
 
 URxvt*scrollTtyOutput:false
 URxvt*scrollWithBuffer:true
-URxvt.font:             xft:Deja Vu Sans Mono:pixelsize=13:antialias=false
+!!URxvt.font: xft:Deja Vu Sans Mono:pixelsize=13:antialias=false
