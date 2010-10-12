@@ -6,7 +6,7 @@ URxvt*cursorColor:    #cdc092
 URxvt*color0:         #111111
 !red
 URxvt*color1:         #705050
-!grÆ
+!green
 URxvt*color2:         #60b48a
 !yellow
 URxvt*color3:         #dfaf8f
@@ -23,7 +23,7 @@ URxvt*color8:         #709080
 !bright-red
 URxvt*color9:         #dca3a3
 !bright-green
-URxvt*color10:        #c3bf9f
+URxvt*color10:        #5fed5f
 !bright-yellow
 URxvt*color11:        #f0dfaf
 !bright-blue
