@@ -122,8 +122,8 @@ autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~
 :inoremap <Esc>Ol +
 :inoremap <Esc>OS -
 
-:colorscheme delek
-" ron, slatea, torte
+:colorscheme ron
+" delek, ron, slate, torte
 
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
