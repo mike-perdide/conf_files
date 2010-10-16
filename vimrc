@@ -71,7 +71,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 set backspace=2
 
-
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>
@@ -128,3 +127,8 @@ autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
+
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
