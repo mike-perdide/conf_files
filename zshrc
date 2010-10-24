@@ -161,3 +161,7 @@ rprompt '()' $BR_BRIGHT_BLACK $PR_GREEN
 #export RPS1="$(print ${time})"
 #export PS2="$(print '%{\e[0;34m%}>%{\e[0m%}')"
 
+setopt extended_glob
+preexec () {
+    echo $$ $USER $(history -1) >> ~/.eternal_history
+}
