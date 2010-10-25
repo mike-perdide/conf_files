@@ -128,16 +128,3 @@ set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
 
-inoremap F <C-O>za
-nnoremap F za
-onoremap F <C-C>za
-vnoremap F zf
-
-inoremap <F7> <C-O>zM
-nnoremap <F7> zM
-onoremap <F7> <C-C>zM
-
-inoremap <F8> <C-O>zR
-nnoremap <F8> zR
-onoremap <F8> <C-C>zR
-
