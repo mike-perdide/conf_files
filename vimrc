@@ -121,10 +121,25 @@ autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~
 :inoremap <Esc>Ol +
 :inoremap <Esc>OS -
 
+:vnoremap <Esc>Oq 1
+:vnoremap <Esc>Or 2
+:vnoremap <Esc>Os 3
+:vnoremap <Esc>Ot 4
+:vnoremap <Esc>Ou 5
+:vnoremap <Esc>Ov 6
+:vnoremap <Esc>Ow 7
+:vnoremap <Esc>Ox 8
+:vnoremap <Esc>Oy 9
+:vnoremap <Esc>Op 0
+:vnoremap <Esc>On .
+:vnoremap <Esc>OQ /
+:vnoremap <Esc>OR *
+:vnoremap <Esc>Ol +
+:vnoremap <Esc>OS -
+
 :colorscheme ron
 " delek, ron, slate, torte
 
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
-
