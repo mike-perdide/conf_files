@@ -60,7 +60,7 @@ alias -g L='|less'
 
 # environment settings
 export PATH=$PATH:$HOME/opt
-export PYTHONPATH=$HOME/opt:$PYTHONPATH
+export PYTHONPATH=$HOME/projets:$HOME/projects:$HOME/opt:$PYTHONPATH
 # export WORKON_HOME=$HOME/.virtualenvs
 # source $HOME/opt/virtualenvwrapper.sh
 
