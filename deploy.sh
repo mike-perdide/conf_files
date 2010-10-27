@@ -11,3 +11,9 @@ ln -s $SCRIPTS_DIR/vimrc ~/.vimrc
 
 rm ~/.gitconfig
 ln -s $SCRIPTS_DIR/gitconfig_home ~/.gitconfig
+
+rm ~/.lynxrc
+ln -s $SCRIPTS_DIR/lynxrc ~/.lynxrc
+
+rm -r ~/.newsbeuter
+ln -s $SCRIPTS_DIR/newsbeuter ~/.newsbeuter
