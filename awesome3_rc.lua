@@ -196,6 +196,18 @@ globalkeys = awful.util.table.join(
             end
         end),
 
+    -- User bindings
+    awful.key({modkey,            }, "KP_6", function() awful.util.spawn("mpc next") end),
+    awful.key({modkey,            }, "KP_Right", function() awful.util.spawn("mpc next") end),
+    awful.key({modkey,            }, "KP_4", function() awful.util.spawn("mpc prev") end),
+    awful.key({modkey,            }, "KP_Left", function() awful.util.spawn("mpc prev") end),
+    awful.key({modkey,            }, "KP_2", function() awful.util.spawn("amixer set PCM 9%-") end),
+    awful.key({modkey,            }, "KP_Down", function() awful.util.spawn("amixer set PCM 9%-") end),
+    awful.key({modkey,            }, "KP_8", function() awful.util.spawn("amixer set PCM 9%+") end),
+    awful.key({modkey,            }, "KP_Up", function() awful.util.spawn("amixer set PCM 9%+") end),
+    awful.key({modkey,            }, "KP_5", function() awful.util.spawn("amixer set PCM toggle") end),
+    awful.key({modkey,            }, "KP_Begin", function() awful.util.spawn("amixer set PCM toggle") end),
+
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
