@@ -105,37 +105,37 @@ match OverLength /\%81v.\+/
 
 autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~/.file-log
 
-:inoremap <Esc>Oq 1
-:inoremap <Esc>Or 2
-:inoremap <Esc>Os 3
-:inoremap <Esc>Ot 4
-:inoremap <Esc>Ou 5
-:inoremap <Esc>Ov 6
-:inoremap <Esc>Ow 7
-:inoremap <Esc>Ox 8
-:inoremap <Esc>Oy 9
-:inoremap <Esc>Op 0
-:inoremap <Esc>On .
-:inoremap <Esc>OQ /
-:inoremap <Esc>OR *
-:inoremap <Esc>Ol +
-:inoremap <Esc>OS -
+"inoremap <Esc>Oq 1
+"inoremap <Esc>Or 2
+"inoremap <Esc>Os 3
+"inoremap <Esc>Ot 4
+"inoremap <Esc>Ou 5
+"inoremap <Esc>Ov 6
+"inoremap <Esc>Ow 7
+"inoremap <Esc>Ox 8
+"inoremap <Esc>Oy 9
+"inoremap <Esc>Op 0
+"inoremap <Esc>On .
+"inoremap <Esc>OQ /
+"inoremap <Esc>OR *
+"inoremap <Esc>Ol +
+"inoremap <Esc>OS -
 
-:vnoremap <Esc>Oq 1
-:vnoremap <Esc>Or 2
-:vnoremap <Esc>Os 3
-:vnoremap <Esc>Ot 4
-:vnoremap <Esc>Ou 5
-:vnoremap <Esc>Ov 6
-:vnoremap <Esc>Ow 7
-:vnoremap <Esc>Ox 8
-:vnoremap <Esc>Oy 9
-:vnoremap <Esc>Op 0
-:vnoremap <Esc>On .
-:vnoremap <Esc>OQ /
-:vnoremap <Esc>OR *
-:vnoremap <Esc>Ol +
-:vnoremap <Esc>OS -
+noremap <Esc>Oq 1
+noremap <Esc>Or 2
+noremap <Esc>Os 3
+noremap <Esc>Ot 4
+noremap <Esc>Ou 5
+noremap <Esc>Ov 6
+noremap <Esc>Ow 7
+noremap <Esc>Ox 8
+noremap <Esc>Oy 9
+noremap <Esc>Op 0
+noremap <Esc>On .
+noremap <Esc>OQ /
+noremap <Esc>OR *
+noremap <Esc>Ol +
+noremap <Esc>OS -
 
 :colorscheme ron
 " delek, ron, slate, torte
