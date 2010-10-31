@@ -17,6 +17,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
+browser = "chromium-browser --proxy-server=localhost:8118"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -207,7 +208,7 @@ globalkeys = awful.util.table.join(
 --    awful.key({modkey,            }, "KP_Up", function() awful.util.spawn("amixer set PCM 9%+") end),
 --    awful.key({modkey,            }, "KP_5", function() awful.util.spawn("amixer set PCM toggle") end),
 --    awful.key({modkey,            }, "KP_Begin", function() awful.util.spawn("amixer set PCM toggle") end),
-    awful.key({modkey,            }, "f", function() awful.util.spawn("firefox") end),
+    awful.key({modkey,            }, "f", function() awful.util.spawn(browser) end),
     awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set PCM 9%-") end),
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set PCM 9%+") end),
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set PCM toggle") end),
