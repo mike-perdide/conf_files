@@ -17,3 +17,6 @@ ln -s $SCRIPTS_DIR/lynxrc ~/.lynxrc
 
 rm -r ~/.newsbeuter
 ln -s $SCRIPTS_DIR/newsbeuter ~/.newsbeuter
+
+rm -r ~/.screenrc
+ln -s $SCRIPTS_DIR/screenrc ~/.screenrc
