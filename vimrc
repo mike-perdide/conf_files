@@ -100,9 +100,6 @@ let NERDTreeWinPos="right"
 
 filetype plugin indent on
 
-highlight OverLength ctermfg=blue guibg=#592929
-match OverLength /\%81v.\+/
-
 autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~/.file-log
 
 "inoremap <Esc>Oq 1
@@ -143,3 +140,5 @@ noremap <Esc>OS -
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
+
+:au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
