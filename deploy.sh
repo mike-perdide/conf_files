@@ -20,3 +20,6 @@ ln -s $SCRIPTS_DIR/newsbeuter ~/.newsbeuter
 
 rm -r ~/.screenrc
 ln -s $SCRIPTS_DIR/screenrc ~/.screenrc
+
+rm ~/.xmodmap
+ln -s $SCRIPTS_DIR/xmodmap ~/.xmodmap
