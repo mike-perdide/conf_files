@@ -42,7 +42,7 @@ function! PythonFoldText()
     if size < 1000
         let size = " " . size
     endif
-    
+
     if match(getline(v:foldstart), '"""') >= 0
         let text = substitute(getline(v:foldstart), '"""', '', 'g' ) . ' '
     elseif match(getline(v:foldstart), "'''") >= 0
@@ -58,22 +58,27 @@ endfunction
 function! PythonFoldExpr(lnum)
 
     if getline(a:lnum) =~ '^\ *\(def\|class\)\ *\s'
+        echo "0"
         return 0
     endif
 
     if getline(a:lnum-1) =~ '^\ *\(def\|class\)\ *\s'
+        echo "1"
         return 1
     endif
 
     if indent(a:lnum) != 0
+        echo "First ="
         return "="
     endif
 
-    if indent( nextnonblank(a:lnum) ) == indent(a:lnum-1)
-        return '='
+    if getline( nextnonblank(a:lnum) ) =~ '^\ *\(def\|class\)\ *\s'
+        echo "0"
+        return '0'
     endif
 
-    return "0"
+    echo "Final ="
+    return "="
 
 endfunction
 
