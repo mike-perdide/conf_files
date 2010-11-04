@@ -141,7 +141,3 @@ set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
 
-hi ErrorMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=black ctermbg=yellow cterm=NONE
-hi WarningMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=white ctermbg=blue cterm=NONE
-:au BufWinEnter * let w:m2=matchadd('WarningMsg', '\%>80v.\+', -1)
-:au BufWinEnter * let w:m2=matchadd('ErrorMsg', '[\x00-\x1f\x80-\xff]', -1)
