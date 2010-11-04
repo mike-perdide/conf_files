@@ -7,6 +7,11 @@ let b:did_ftplugin = 1
 map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
 map <buffer> gd /def <C-R><C-W><CR> 
 
+hi ErrorMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=black ctermbg=yellow cterm=NONE
+hi WarningMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=white ctermbg=blue cterm=NONE
+:au BufWinEnter * let w:m2=matchadd('WarningMsg', '\%>80v.\+', -1)
+:au BufWinEnter * let w:m2=matchadd('ErrorMsg', '[\x00-\x1f\x80-\xff]', -1)
+
 set foldmethod=expr
 set foldexpr=PythonFoldExpr(v:lnum)
 set foldtext=PythonFoldText()
