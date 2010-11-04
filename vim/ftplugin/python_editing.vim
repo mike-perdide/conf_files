@@ -52,23 +52,23 @@ endfunction
 
 function! PythonFoldExpr(lnum)
 
-    if indent( nextnonblank(a:lnum) ) == 0
-        return 0
-    endif
-    
-    if getline(a:lnum-1) =~ '^\(class\|def\)\s'
-        return 1
-    endif
-        
-    if getline(a:lnum) =~ '^\s*$'
-        return "="
-    endif
-    
-    if indent(a:lnum) == 0
+    if getline(a:lnum) =~ '^\ *\(def\|class\)\ *\s'
         return 0
     endif
 
-    return '='
+    if getline(a:lnum-1) =~ '^\ *\(def\|class\)\ *\s'
+        return 1
+    endif
+
+    if indent(a:lnum) != 0
+        return "="
+    endif
+
+    if indent( nextnonblank(a:lnum) ) == indent(a:lnum-1)
+        return '='
+    endif
+
+    return "0"
 
 endfunction
 
