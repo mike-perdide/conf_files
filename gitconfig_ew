@@ -16,5 +16,6 @@
     sta = status
     up = pull --rebase
     co = checkout
+    in = !git fetch origin && git log --stat HEAD..origin/master
 [merge]
     tool = vimdiff
