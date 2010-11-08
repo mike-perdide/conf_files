@@ -9,8 +9,11 @@ ln -s $SCRIPTS_DIR/vim ~/.vim
 rm ~/.vimrc
 ln -s $SCRIPTS_DIR/vimrc ~/.vimrc
 
-rm ~/.gitconfig
-ln -s $SCRIPTS_DIR/gitconfig_home ~/.gitconfig
+if [ ! -L ~/.gitconfig]
+then
+    rm ~/.gitconfig
+    ln -s $SCRIPTS_DIR/gitconfig_home ~/.gitconfig
+fi
 
 rm ~/.lynxrc
 ln -s $SCRIPTS_DIR/lynxrc ~/.lynxrc
