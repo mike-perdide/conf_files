@@ -72,10 +72,10 @@ function! PythonFoldExpr(lnum)
         return "="
     endif
 
-    if getline( nextnonblank(a:lnum) ) =~ '^\ *\(def\|class\)\ *\s'
+"    if getline( nextnonblank(a:lnum) ) =~ '^\ *\(def\|class\)\ *\s'
 "        echo "0"
-        return '0'
-    endif
+"        return '0'
+"    endif
 
 "    echo "Final ="
     return "="
