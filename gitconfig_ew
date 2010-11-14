@@ -13,7 +13,7 @@
     ci = commit -v -uno
     wu = log --stat origin/master..@{0}
     st = status -uno
-    st = status
+    sta = status
     up = pull --rebase
     co = checkout
 [merge]
