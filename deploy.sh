@@ -23,3 +23,6 @@ ln -s $SCRIPTS_DIR/screenrc ~/.screenrc
 
 rm ~/.xmodmap
 ln -s $SCRIPTS_DIR/xmodmap ~/.xmodmap
+
+rm -r ~/.irssi
+ln -s $SCRIPTS_DIR/irssi ~/.irssi
