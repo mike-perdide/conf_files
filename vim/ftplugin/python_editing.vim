@@ -58,26 +58,26 @@ endfunction
 function! PythonFoldExpr(lnum)
 
     if getline(a:lnum) =~ '^\ *\(def\|class\)\ *\s'
-        echo "0"
+"        echo "0"
         return 0
     endif
 
     if getline(a:lnum-1) =~ '^\ *\(def\|class\)\ *\s'
-        echo "1"
+"        echo "1"
         return 1
     endif
 
     if indent(a:lnum) != 0
-        echo "First ="
+"        echo "First ="
         return "="
     endif
 
     if getline( nextnonblank(a:lnum) ) =~ '^\ *\(def\|class\)\ *\s'
-        echo "0"
+"        echo "0"
         return '0'
     endif
 
-    echo "Final ="
+"    echo "Final ="
     return "="
 
 endfunction
