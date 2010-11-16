@@ -12,8 +12,7 @@
     pullrebase = pull --rebase
     ci = commit -v -uno
     wu = log --stat origin/master..@{0}
-    st = status -uno
-    sta = status
+    st = status
     up = pull --rebase
     co = checkout
     in = !git fetch origin && git log --stat HEAD..origin/master
