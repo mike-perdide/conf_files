@@ -11,7 +11,7 @@
 [alias]
     pullrebase = pull --rebase
     ci = commit -v -uno
-    wu = log --stat origin/master..@{0}
+    wu = log origin/master..@{0} --pretty='format:%Cblue%ar%Creset %Cgreen%h%Creset %s' --color
     st = status
     up = pull --rebase
     co = checkout
