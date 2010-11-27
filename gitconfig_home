@@ -18,5 +18,6 @@
     in = !git fetch origin && git log --stat HEAD..origin/master
     create-remote-branch = "!f() { git push origin origin/master:refs/heads/$1 && git fetch origin && git checkout --track -b $1 origin/$1; }; f"
     delete-remote-branch = "!f() { git push origin :heads/$1; }; f"
+    oops = rebase -i HEAD~10
 [merge]
     tool = vimdiff
