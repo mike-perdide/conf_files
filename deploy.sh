@@ -9,7 +9,7 @@ ln -s $SCRIPTS_DIR/vim ~/.vim
 rm ~/.vimrc
 ln -s $SCRIPTS_DIR/vimrc ~/.vimrc
 
-if [ ! -L ~/.gitconfig]
+if [ ! -L ~/.gitconfig ]
 then
     rm ~/.gitconfig
     ln -s $SCRIPTS_DIR/gitconfig_home ~/.gitconfig
