@@ -9,7 +9,7 @@ deploy(){
     # $2 is the destination of the script (e.g. ~/.vimrc)
     # $3 is the source of the script (e.g. ~/conffiles/vimrc)
     check_installed $1
-    if [ $is_installed ]
+    if [ $is_installed ] && [ ! -L $2 ]
     then
         echo "$1 is installed, deploying $2"
         rm -r $2
