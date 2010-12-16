@@ -1,20 +1,17 @@
 SCRIPTS_DIR=$PWD
 
 check_installed(){
-    count=$(dpkg -l|grep " $1 "|wc -l) 
-    if (( $count != 0 ))
-    then
-        echo "yes"
-    fi
+    is_installed=$(dpkg -l|grep " $1 "|wc -l)
 }
 
 deploy(){
     # $1 is the program name (e.g. vim)
     # $2 is the destination of the script (e.g. ~/.vimrc)
     # $3 is the source of the script (e.g. ~/conffiles/vimrc)
-    is_installed=$(check_installed $1)
+    check_installed $1
     if [ $is_installed ]
     then
+        echo "$1 is installed, deploying $2"
         rm -r $2
         ln -s $3 $2
     fi
@@ -26,7 +23,7 @@ deploy zsh ~/.zshrc $SCRIPTS_DIR/zshrc
 deploy vim ~/.vim $SCRIPTS_DIR/vim
 deploy vim ~/.vimrc $SCRIPTS_DIR/vimrc
 
-deploy git-core ~/.gitconfig ln -s $SCRIPTS_DIR/gitconfig_home
+deploy git-core ~/.gitconfig $SCRIPTS_DIR/gitconfig_home
 
 deploy lynx ~/.lynxrc $SCRIPTS_DIR/lynxrc
 
