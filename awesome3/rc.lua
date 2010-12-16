@@ -213,7 +213,7 @@ globalkeys = awful.util.table.join(
     awful.key({modkey,            }, "f", function() awful.util.spawn(browser) end),
     awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set PCM 9%-") end),
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set PCM 9%+") end),
-    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set PCM toggle") end),
+    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
     awful.key({ }, "F9", function() awful.util.spawn("/home/mike/opt/whatsontheradio") end),
     awful.key({ }, "F10", function() awful.util.spawn("mpc prev") end),
     awful.key({ }, "F11", function() awful.util.spawn("mpc toggle") end),
