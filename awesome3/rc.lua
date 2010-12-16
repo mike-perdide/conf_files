@@ -17,6 +17,7 @@ beautiful.init("/home/mike/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
+transp_terminal = "urxvt -tr"
 editor = os.getenv("EDITOR") or "editor"
 -- You should install privoxy to block adds
 browser = "chromium-browser --proxy-server=localhost:8118"
@@ -221,6 +222,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey, "Control" }, "Return", function () awful.util.spawn(transp_terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
