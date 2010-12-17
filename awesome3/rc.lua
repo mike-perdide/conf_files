@@ -326,9 +326,9 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "kmail" },
+    { rule = { class = "Kmail" },
       properties = { tag = tags[1][9] } },
-    { rule = { class = "korganizer" },
+    { rule = { class = "Korganizer" },
       properties = { tag = tags[1][9] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
