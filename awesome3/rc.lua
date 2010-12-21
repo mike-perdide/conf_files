@@ -340,9 +340,9 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Kmail" },
-      properties = { tag = tags[1][9] } },
+      properties = { tag = tags[2][9] } },
     { rule = { class = "Korganizer" },
-      properties = { tag = tags[1][9] } },
+      properties = { tag = tags[2][9] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
@@ -379,3 +379,16 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Autorun programs
+autorun = true
+autorunApps =
+{
+    "kmail",
+    "korganizer",
+}
+if autorun then
+    for app = 1, #autorunApps do
+        awful.util.spawn(autorunApps[app])
+    end
+end
