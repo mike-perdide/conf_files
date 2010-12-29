@@ -45,17 +45,24 @@ def calc_remaining_time():
     date_delta = current_date - last_date
     cap_delta = current_cap - last_cap
 
+    print "Last capactity: %d mWh" % last_cap
+    print "Current capaticty: %d mWh" % current_cap
+    print date_delta.seconds/60, "minutes ", date_delta.seconds%60, "seconds"
     # mW per minute
     ratio = (cap_delta/(date_delta.seconds/60.))
+    print "Rate: %d mWh per minute" % ratio
+
+    if ratio == 0:
+        return "too soon"
 
     # remaining minutes
     remaining_time = (abs(int(current_cap)/ratio))
 
     if remaining_time >= 60:
-        displayed_time = "%dh %dm" % (remaining_time/60,
+        displayed_time = "%d h %d min" % (remaining_time/60,
                                       remaining_time%60)
     else:
-        displayed_time = "%dm" % remaining_time
+        displayed_time = "%d min" % remaining_time
 
     return displayed_time
 
@@ -76,8 +83,10 @@ if __name__ == "__main__":
             charging = '<'
         elif charging_state == "charging":
             charging = '>'
+        elif charging_state == "charged":
+            charging = '='
         else:
-            raise Exception("Oops, the charging state is of unknow type:" + charging)
+            raise Exception("Oops, the charging state is of unknow type:" + charging_state)
 
         remaining_time = calc_remaining_time()
 
