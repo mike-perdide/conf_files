@@ -14,17 +14,17 @@ markers = ["#", "*", "-", "+", "="]
 
 authors_marker_mapping = {}
 
-for commit in repo.iter_commits():
+for commit in repo.commits(max_count=repo.commit_count()-3):
     author = str(commit.author)
 
     if not authors_marker_mapping.has_key(author):
         marker = markers.pop()
         authors_marker_mapping[author] = marker
 
-    commit_date = datetime.datetime.fromtimestamp(commit.committed_date)
-    new_day = commit_date.day
-    new_month = commit_date.month
-    new_year = commit_date.year
+    commit_date = commit.committed_date
+    new_day = commit_date.tm_mday
+    new_month = commit_date.tm_mon
+    new_year = commit_date.tm_year
 
     if new_year != current_year:
         current_year = new_year
@@ -34,7 +34,7 @@ for commit in repo.iter_commits():
         current_month = new_month
         summup[current_year][current_month] = {}
 
-    if commit_date.day != current_day:
+    if new_day != current_day:
         current_day = new_day
         summup[current_year][current_month][current_day] = {}
 
@@ -49,10 +49,13 @@ for year in summup:
             s_day = "0%d" % day if day <10 else "%d" % day
             s_month = "0%d" % month if month <10 else "%d" % month
             full_line = "%s/%s/%d" % (s_day, s_month, year) + " "
+            total = 0
             for author in summup[year][month][day]:
                 n_commits = summup[year][month][day][author]
                 full_line += authors_marker_mapping[author] * n_commits
-            print full_line
+                total += n_commits
+            print full_line, total
+        print ""
 
 print "====== Legend : ======"
 for author in authors_marker_mapping:
