@@ -172,6 +172,11 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey,           }, "a",
+        function ()
+            awful.tag.viewonly(tags[1][9])
+            awful.tag.viewonly(tags[2][9])
+        end),
     awful.key({ modkey,           }, "o",
         function (scr)
             awful.screen.focus_relative(1)
@@ -225,8 +230,8 @@ globalkeys = awful.util.table.join(
 --    awful.key({modkey,            }, "KP_5", function() awful.util.spawn("amixer set PCM toggle") end),
 --    awful.key({modkey,            }, "KP_Begin", function() awful.util.spawn("amixer set PCM toggle") end),
     awful.key({modkey,            }, "f", function() awful.util.spawn(browser) end),
-    awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set PCM 9%-") end),
-    awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set PCM 9%+") end),
+    awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 9%-") end),
+    awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 9%+") end),
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
     awful.key({ }, "F9", function() awful.util.spawn("/home/mike/opt/whatsontheradio") end),
     awful.key({ }, "F10", function() awful.util.spawn("mpc prev") end),
@@ -289,16 +294,18 @@ for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
-                        local screen = mouse.screen
-                        if tags[screen][i] then
-                            awful.tag.viewonly(tags[screen][i])
-                        end
+                      local screen = mouse.screen
+                      if tags[screen][i] then
+                          awful.tag.viewonly(tags[screen][i])
+                      end
                   end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
                       local screen = mouse.screen
                       if tags[screen][i] then
-                          awful.tag.viewtoggle(tags[screen][i])
+                          awful.tag.viewonly(tags[1][i])
+                          awful.tag.viewonly(tags[2][i])
+                          --awful.tag.viewtoggle(tags[screen][i])
                       end
                   end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
@@ -313,6 +320,13 @@ for i = 1, keynumber do
                           awful.client.toggletag(tags[client.focus.screen][i])
                       end
                   end))
+--        awful.key({ modkey, "Mod1"}, "#" .. i + 9,
+--                  function ()
+--                      if tags[screen][i] then
+--                          awful.tag.viewonly(tags[1][i])
+--                          --awful.tag.viewonly(tags[2][i])
+--                      end
+--                  end))
 end
 
 clientbuttons = awful.util.table.join(
