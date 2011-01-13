@@ -10,11 +10,15 @@ commits = {}
 
 summup = {}
 
-markers = ["#", "*", "-", "+", "="]
+markers = ["#", "*", "/", "$", "="]
 
 authors_marker_mapping = {}
+print repo.commit_count()
 
-for commit in repo.commits(max_count=repo.commit_count()-3):
+for commit in repo.commits(max_count=repo.commit_count()):
+    print dir(commit)
+    break
+
     author = str(commit.author)
 
     if not authors_marker_mapping.has_key(author):
@@ -26,26 +30,32 @@ for commit in repo.commits(max_count=repo.commit_count()-3):
     new_month = commit_date.tm_mon
     new_year = commit_date.tm_year
 
-    if new_year != current_year:
-        current_year = new_year
-        summup[current_year]= {}
+    if not summup.has_key(new_year):
+        summup[new_year] = {}
 
-    if new_month != current_month:
-        current_month = new_month
-        summup[current_year][current_month] = {}
+    if not summup[new_year].has_key(new_month):
+        summup[new_year][new_month] = {}
 
-    if new_day != current_day:
-        current_day = new_day
-        summup[current_year][current_month][current_day] = {}
+    if not summup[new_year][new_month].has_key(new_day):
+        summup[new_year][new_month][new_day] = {}
 
-    commits = summup[current_year][current_month][current_day]
+    commits = summup[new_year][new_month][new_day]
     if not commits.has_key(author):
         commits[author] = 1
     else:
         commits[author] += 1
-for year in summup:
-    for month in summup[year]:
-        for day in summup[year][month]:
+
+
+years_ordered = summup.keys()
+years_ordered.sort()
+print years_ordered
+for year in years_ordered:
+    months_ordered = summup[year].keys()
+    months_ordered.sort()
+    for month in months_ordered:
+        days_ordered = summup[year][month].keys()
+        days_ordered.sort()
+        for day in days_ordered:
             s_day = "0%d" % day if day <10 else "%d" % day
             s_month = "0%d" % month if month <10 else "%d" % month
             full_line = "%s/%s/%d" % (s_day, s_month, year) + " "
