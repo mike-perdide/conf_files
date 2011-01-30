@@ -61,8 +61,12 @@ alias -g L='|less'
 # environment settings
 export PATH=$PATH:$HOME/opt
 export PYTHONPATH=$HOME/opt:$PYTHONPATH
-# export WORKON_HOME=$HOME/.virtualenvs
-# source $HOME/opt/virtualenvwrapper.sh
+
+export WORKON_HOME=$HOME/.virtualenvs
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]
+then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # key bindings
 typeset -g -A key
