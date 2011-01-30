@@ -1,23 +1,23 @@
 [user]
-    email = miotte.julien@gmail.com
-    name = Julien Miotte
+	email = miotte.julien@gmail.com
+	name = Julien Miotte
 [core]
-    editor = vim
-    pager = most
+	editor = vim
+	pager = most
 [color]
-    diff = auto
-    pager = true
-    ui = auto
+	diff = auto
+	pager = true
+	ui = auto
 [alias]
-    pullrebase = pull --rebase
-    ci = commit -v -uno
-    wu = log origin/master..@{0} --pretty='format:%Cblue%ar%Creset %Cgreen%h%Creset %s' --color
-    st = status
-    up = pull --rebase
-    co = checkout
-    in = !git fetch origin && git log --stat HEAD..origin/master
-    create-remote-branch = "!f() { git push origin origin/master:refs/heads/$1 && git fetch origin && git checkout --track -b $1 origin/$1; }; f"
-    delete-remote-branch = "!f() { git push origin :heads/$1; }; f"
-    oops = rebase -i HEAD~10
+	pullrebase = pull --rebase
+	ci = commit -v -uno
+	wu = log origin/master..@{0} --pretty='format:%Cblue%ar%Creset %Cgreen%h%Creset %s' --color
+	st = status
+	up = pull --rebase
+	co = checkout
+	in = !git fetch origin && git log --stat HEAD..origin/master
+	create-remote-branch = "!f() { git push origin origin/master:refs/heads/$1 && git fetch origin && git checkout --track -b $1 origin/$1; }; f"
+	delete-remote-branch = "!f() { git push origin :heads/$1; }; f"
+	oops = rebase -i HEAD~10
 [merge]
-    tool = vimdiff
+	tool = vimdiff
