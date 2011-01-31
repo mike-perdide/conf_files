@@ -180,6 +180,7 @@ alias d2='cd ~/projects/all_distutils2/orig_d2'
 alias d2_contr='cd ~/projects/all_distutils2/contribute_d2'
 alias d2_conv='cd ~/projects/all_distutils2/convert_d2'
 alias qgfb='cd ~/projects/qGitFilterBranch/'
+alias asr='cd ~/projects/asr'
 alias cf='cd ~/conffiles'
 
 export HGEDITOR=~/conffiles/hg/hgeditor
