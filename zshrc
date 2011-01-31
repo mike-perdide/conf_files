@@ -175,3 +175,5 @@ setopt extended_glob
 preexec () {
     echo $$ $USER $(history -1) >> ~/.eternal_history
 }
+
+alias cf='cd ~/conffiles'
