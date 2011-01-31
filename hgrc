@@ -1,0 +1,16 @@
+[ui]
+username = Julien Miotte <miotte.julien@gmail.com>
+
+[extensions]
+mq =
+graphlog =
+hgk =
+record =
+rebase =
+
+[defaults]
+log = --limit 10
+glog = --limit 10
+
+[diff]
+git = true
