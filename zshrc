@@ -176,7 +176,8 @@ preexec () {
     echo $$ $USER $(history -1) >> ~/.eternal_history
 }
 
-alias cf='cd ~/conffiles'
-
-export HGEDITOR=~/conffiles/hg/hgeditor
-# Local definitions
+alias no='cd ~/projects/nouvelordre'
+alias d2='cd ~/projects/all_distutils2/orig_d2'
+alias d2_contr='cd ~/projects/all_distutils2/contribute_d2'
+alias d2_conv='cd ~/projects/all_distutils2/convert_d2'
+alias qgfb='cd ~/projects/qGitFilterBranch/'
