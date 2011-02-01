@@ -7,13 +7,13 @@
 # only for Mercurial, modify this:
 case "${EDITOR}" in
     "")
-        EDITOR="sensible-editor"
+        EDITOR="vim -f -o"
         ;;
     emacs)
         EDITOR="$EDITOR -nw"
         ;;
     gvim|vim)
-        vim "+e $HGTMP/diff" '+set buftype=help filetype=diff' "+vsplit $HGTMP/msg" || exit $?
+        EDITOR="$EDITOR -f -o"
         ;;
 esac
 
@@ -45,7 +45,8 @@ MD5=$(which md5sum 2>/dev/null) || \
     MD5=$(which md5 2>/dev/null)
 [ -x "${MD5}" ] && CHECKSUM=`${MD5} "$HGTMP/msg"`
 if [ -s "$HGTMP/diff" ]; then
-    $EDITOR "$HGTMP/msg" "$HGTMP/diff" || exit $?
+    #$EDITOR "$HGTMP/msg" "$HGTMP/diff" || exit $?
+    vim "+e $HGTMP/diff" '+set buftype=help filetype=diff' "+vsplit $HGTMP/msg" || exit $?
 else
     $EDITOR "$HGTMP/msg" || exit $?
 fi
