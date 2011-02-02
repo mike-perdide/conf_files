@@ -46,3 +46,4 @@ deploy awesome ~/.config/awesome/rc.lua $SCRIPTS_DIR/awesome3/rc.lua
 deploy awesome ~/.config/awesome/theme.lua $SCRIPTS_DIR/awesome3/theme.lua
 
 deploy mercurial ~/.hgrc $SCRIPTS_DIR/hgrc
+deploy tmux ~/.tmux.conf $SCRIPTS_DIR/tmux.conf
