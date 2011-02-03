@@ -66,7 +66,6 @@ alias gofile='sudo apt-file search'
 
 # environment settings
 export PATH=$PATH:$HOME/opt
-export PYTHONPATH=$HOME/opt:$PYTHONPATH
 
 export WORKON_HOME=$HOME/.virtualenvs
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]
