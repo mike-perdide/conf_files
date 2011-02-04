@@ -179,3 +179,4 @@ preexec () {
 alias cf='cd ~/conffiles'
 
 export HGEDITOR=~/conffiles/hg/hgeditor
+# Local definitions
