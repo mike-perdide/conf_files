@@ -1,0 +1,165 @@
+#!/usr/bin/python
+
+"""
+Dirty tool to deploy config scripts.
+We use this in conjunction with a git repo where every machine has its branch
+"""
+
+from argparse import ArgumentParser
+from csv import reader
+from os import X_OK, access, environ, makedirs, symlink, unlink
+from os.path import dirname, expanduser, exists, islink, join, realpath
+from shutil import rmtree
+import sys
+import logging
+
+
+SRC = realpath(dirname(sys.argv[0]))
+DST = expanduser("~")
+
+
+def delconf(filename):
+    """
+    deletes anything you ask
+    """
+    if islink(filename):
+        unlink(filename)
+    else:
+        rmtree(filename)
+
+
+class Deployer(object):
+    """
+    This will deploy (or not) your config files
+    """
+    def __init__(self, syspath, src, dst):
+        """
+        The constructor wants:
+        syslog: the environment PATH variable
+        src: the dir where we pull files
+        dst: the base installation dir (likely home)
+        """
+        self.syspath = syspath.split(':')
+        self.src = src
+        self.dst = dst
+
+    def has_exe(self, exename):
+        """
+        If this name in the PATH?
+        Is the file executable?
+        """
+        for directory in self.syspath:
+            searched = join(directory, exename)
+            if exists(searched) and access(searched, X_OK):
+                return True
+        return False
+
+    def deploy(self, exename, confsrc, confdst):
+        """
+        unlinks previous install, which is rude.
+        installs new conf
+
+        exename: the exe that must exist if you want config files installation
+        confsrc: the place
+        """
+        logger = logging.getLogger('%s>%s' % (exename, confsrc))
+        logger.debug("Processing exe: %s\tsrc: %s\tdst: %s" %
+            (exename, confsrc, confdst))
+        if not self.has_exe(exename):
+            logger.info('[NOT INSTALLED] (skipping)')
+            return
+
+        logger.info('[INSTALLED] (installing conf)')
+
+        confsrc = join(self.src, confsrc)
+        confdst = join(self.dst, confdst)
+
+        #wipe
+        if exists(confdst):
+            logger.debug('Removing %s' % confdst)
+            delconf(confdst)
+
+        #prepare if dirs don't exist
+        basedir = dirname(confdst)
+        if not exists(basedir):
+            logger.debug("Creating %s" % basedir)
+            makedirs(basedir)
+
+        #install
+        symlink(realpath(confsrc), confdst)
+        logger.debug('\t Copy done')
+
+
+def parse_args():
+    """
+    returns parsed argv
+    """
+    parser = ArgumentParser(
+        description='deploys your config files the dirty way')
+    parser.add_argument('--sourcedir', '-s', default=SRC,
+        help="Conf files repository, must hold a 'conf.list' file, "
+        "defaults to %s" % SRC)
+    parser.add_argument('--destdir', '-d', default=DST,
+        help="Where to install, defaults to %s" % DST)
+    parser.add_argument('--verbose', '-v', action='store_true',
+        help="be verbose")
+    return parser.parse_args()
+
+
+def read_conflist(filename):
+    """
+    reads supplied file and yields a list of records
+    """
+    with open(filename, 'r') as conffd:
+        csvreader = reader(conffd)
+        for index, row in enumerate(csvreader):
+            if not row:
+                continue
+            if row[0].startswith('#'):
+                continue
+            if len(row) != 3:
+                raise ValueError("Row %d has incorrect formatting: %s" %
+                    (index + 1, ','.join(row)))
+            yield row
+
+
+def deploy(syspath, src, dst, records):
+    """
+    Function that does the job
+    """
+    deployer = Deployer(syspath, src, dst)
+
+    for exename, confsrc, confdst in records:
+        deployer.deploy(exename, confsrc, confdst)
+
+
+def main():
+    """
+    Main function, ran when the module is executed
+    """
+
+    parsed = parse_args()
+
+    level = logging.DEBUG if parsed.verbose else logging.INFO
+    logging.basicConfig(format="[%(name)-27s] %(message)s", level=level)
+
+    syspath = environ.get('PATH')
+    if not syspath:
+        logging.error('Needs PATH environment variable to seek exe')
+        sys.exit(2)
+
+    src = parsed.sourcedir
+    dst = parsed.destdir
+    conflist = realpath(join(src, 'conf.list'))
+
+    logarg = {'conflist': conflist}
+
+    if not exists(conflist):
+        logging.error('%(conflist)s: file not found', logarg)
+        sys.exit(2)
+
+    logging.debug('Reading %s', logarg)
+    deploy(syspath, src, dst, read_conflist(conflist))
+
+if __name__ == '__main__':
+    main()

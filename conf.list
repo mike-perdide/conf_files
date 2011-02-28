@@ -1,0 +1,20 @@
+#csv -comma separated values)-
+#empty lines ignored. Comment lines start with '#'.
+#
+#Format:
+#Executable name, source directory (relative to this dir), config destination (relative to dest/home dir)
+
+awesome,awesome3/rc.lua,.config/awesome/rc.lua
+awesome,awesome3/theme.lua,.config/awesome/theme.lua
+bash,xmodmap,.xmodmap
+git-core,gitconfig_home,.gitconfig
+irssi,irssi,.irssi
+lynx,lynxrc,.lynxrc
+mercurial,hgrc,.hgrc
+newsbeuter,newsbeuter,.newsbeuter
+screen,screenrc,.screenrc
+tmux,tmux.conf,.tmux.conf
+vim,vimrc,.vimrc
+vim,vim,.vim
+Xorg,Xdefaults,.Xdefaults
+zsh,zshrc,.zshrc
