@@ -1,7 +1,7 @@
 !#define FONT       -*-lucidatypewriter-medium-*-*-*-12-*-*-*-*-*-*-*
 !#define FONT_BOLD  -*-lucidatypewriter-bold-*-*-*-12-*-*-*-*-*-*-*
-!#include "/home/mike/.xrdb/look-zenburn.xrdb"
-!#include "/home/mike/.xrdb/xterm.xrdb"
+!#include "~/.xrdb/look-zenburn.xrdb"
+!#include "~/.xrdb/xterm.xrdb"
 !xterm*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
 !xterm*faceName: terminus-18
 !!xterm*faceName: Police-14

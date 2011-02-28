@@ -6,7 +6,7 @@ import sys
 
 STATE_FILE = "/proc/acpi/battery/BAT0/state"
 INFO_FILE = "/proc/acpi/battery/BAT0/info"
-DUMP_FILE = "/home/mike/.battery_dump"
+DUMP_FILE = "~/.battery_dump"
 
 range = 20
 

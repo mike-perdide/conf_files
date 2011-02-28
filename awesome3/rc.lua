@@ -13,7 +13,7 @@ require("debian.menu")
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init("/home/mike/.config/awesome/theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -233,7 +233,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 9%-") end),
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 9%+") end),
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
-    awful.key({ }, "F9", function() awful.util.spawn("/home/mike/opt/whatsontheradio") end),
+    awful.key({ }, "F9", function() awful.util.spawn("~/opt/whatsontheradio") end),
     awful.key({ }, "F10", function() awful.util.spawn("mpc prev") end),
     awful.key({ }, "F11", function() awful.util.spawn("mpc toggle") end),
     awful.key({ }, "F12", function() awful.util.spawn("mpc next") end),

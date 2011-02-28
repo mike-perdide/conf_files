@@ -21,3 +21,7 @@
 	oops = rebase -i HEAD~10
 [merge]
 	tool = vimdiff
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 732x550+1180+0
+	main-window-view = FileView
