@@ -20,7 +20,9 @@ terminal = "urxvt"
 transp_terminal = "urxvt -tr"
 editor = os.getenv("EDITOR") or "editor"
 -- You should install privoxy to block adds
-browser = "chromium-browser --proxy-server=localhost:8118"
+browser = "chromium-browser"
+firefox = "firefox"
+-- --proxy-server=localhost:8118"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -230,6 +232,7 @@ globalkeys = awful.util.table.join(
 --    awful.key({modkey,            }, "KP_5", function() awful.util.spawn("amixer set PCM toggle") end),
 --    awful.key({modkey,            }, "KP_Begin", function() awful.util.spawn("amixer set PCM toggle") end),
     awful.key({modkey,            }, "f", function() awful.util.spawn(browser) end),
+    awful.key({modkey, "Shift"    }, "f", function() awful.util.spawn(firefox) end),
     awful.key({ }, "XF86AudioLowerVolume", function() awful.util.spawn("amixer set Master 9%-") end),
     awful.key({ }, "XF86AudioRaiseVolume", function() awful.util.spawn("amixer set Master 9%+") end),
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
