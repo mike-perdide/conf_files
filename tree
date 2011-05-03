@@ -1,0 +1,216 @@
+#!/bin/bash
+####################################################### 
+# MAC UNIX TREE                                       
+# Version: 1.0
+# 
+# By Tony Lauro
+#
+# concept based on tree algorithm downloaded from 
+# http://www.centerkey.com/tree/
+# additional modifications based on vtree function 
+# written by Brad Reeves
+# 
+# Displays Structure of Directory Hierarchy 
+# 
+# ------------------------------------------------- 
+# 
+# This script uses find and bash string manipulation
+# to show the nesting of sub-directories. Files are 
+# colored based on types.
+# 
+# Setup: 
+# 
+# % chmod u+x /<install_directory>/tree
+# % ln -s /<install_directory>/tree ~/bin/tree 
+# 
+# Usage: 
+# 
+# % tree <directory> <exclude .DS_Store .localized CVS>
+# 
+# Public Domain Software -- Free to Use as You Like 
+#######################################################
+
+usage ()
+{
+    echo ""
+    echo "usage: $1 <directory> <exclude .DS_Store .localized CVS>"
+    echo "usage: directory is optional. if left out, current dir is used"
+    echo "usage: exclude boolean is optional."
+    echo "       if left out the .DS_Store, .localized, and CVS files are excluded"
+    echo "       if used, then you must include a directory as first param"
+    echo "e.g:   '$1 . false' - displays the .DS_Store and .localized files"
+    echo "e.g:   '$1 . true'  - does NOT display the .DS_Store and .localized files"
+    echo "e.g:   '$1'         - does NOT display the .DS_Store and .localized files"
+    echo ""
+    exit 0;
+}
+
+DIR_NUM=0
+FIL_NUM=0
+
+colorize ()
+{
+    # check for file or directory
+    if [ "$2" = "f" ]; then
+        # increment 
+        (( FIL_NUM++ ))
+
+        # trim file name to trailing .<filetype>
+        FILETYPE=${1##*/}
+        FILETYPE=${FILETYPE##*.}
+        # switch statement
+        case "$FILETYPE" in 
+          bz|bz2|ear|gz|hqx|img|iso|jar|rpm|sar|sit|srpm|tar|tgz|war|zip)
+            echo -ne "\033[0;31m" #red
+            ;;
+          BZ|BZ2|EAR|GZ|HQX|IMG|ISO|JAR|RPM|SAR|SIT|SRPM|TAR|TGZ|WAR|ZIP)
+            echo -ne "\033[0;31m" #red
+            ;;
+          java|class|htm|html|txt|xbm|xml)
+            echo -ne "\033[0;36m" #cyan
+            ;;
+          JAVA|CLASS|HTM|HTML|TXT|XBM|XML|README)
+            echo -ne "\033[0;36m" #cyan
+            ;;
+          bin|exe|groovy|pl|sh|sql)
+            echo -ne "\033[0;32m" #green
+            ;;
+          BIN|EXE|GROOVY|PL|SH|SQL)
+            echo -ne "\033[0;32m" #green
+            ;;
+          gif|img|jpg|jpeg|png|ps|psd|swf|tif|tiff)
+            echo -ne "\033[0;35m" #purple
+            ;;
+          GIF|IMG|JPG|JPEG|PNG|PS|PSD|SWF|TIF|TIFF)
+            echo -ne "\033[0;35m" #purple
+            ;;
+          avi|mov|mpeg|mpg|mp3|wav|wmv)
+            #echo -ne "\033[0;46;37m" #white on cyan bg
+            echo -ne "\033[0;46m" #cyan bg
+            ;;
+          AVI|MOV|MPEG|MPG|MP3|WAV|WMV)
+            #echo -ne "\033[0;46;37m" #white on cyan bg
+            echo -ne "\033[0;46m" #cyan bg
+            ;;
+          doc|pdf|ppt|rtf|xls)
+            echo -ne "\033[0;33m" #yellow
+            ;;
+          DOC|PDF|PPT|RTF|XLS)
+            echo -ne "\033[0;33m" #yellow
+            ;;
+          *)
+            return
+            ;;
+        esac
+
+    elif [ "$2" = "d" ]; then
+        # increment 
+        (( DIR_NUM++ ))
+        echo -ne "\033[1;34m" #bold blue
+        return
+    fi
+}
+
+function formatleader ()
+{
+    # format path for output
+    _PATH=$1
+    # remove filename
+    LEADER=${_PATH%/*}
+    # replace all text between 2 / with nothing 
+    LEADER=${LEADER//[a-zA-Z0-9\.\_\-\(\)\[\]\'\+\: ]/} # alphanumeric . _ - () [] ' + : space 
+    SLASH_CNT=${#LEADER}
+    if [ $SLASH_CNT -gt 1 ]; then
+        # replace each / with 4 spaces
+        LEADER=${LEADER//\//    }
+        # replace leading space with |
+        LEADER=${LEADER/ /|}
+    else
+        # replace / with | and 3 spaces
+        LEADER=${LEADER//\//|   }
+    fi
+
+    LEADER="$LEADER|-- "
+}
+
+function walktree ()
+{
+    # set for file globbing to handle spaces correctly
+    IFS=$'\n' 
+
+    # if $2 = true or if $2 has not been set
+    if [ ${2:-x} == "true" -o ${2:-x} == "x" ]; then
+        # sort find and send to egrep which removes 
+        # files that end in .DS_Store, .localized, or have CVS in path
+        FILEPATHS=`find ${1-.} -print | egrep -v '.git|.DS_Store$|.localized$|CVS'`
+    else
+        # sort find
+        FILEPATHS=`find ${1-.} -print`
+    fi
+
+    for FILEPATH in $FILEPATHS; do
+        # check if file 
+        if [ -f "$FILEPATH" ]; then
+            # print spacer and leader
+            formatleader "$FILEPATH"
+            echo -ne "$LEADER"
+            # colorize
+            colorize "$FILEPATH" "f"
+            # print file name
+            echo ${FILEPATH##*/}
+        else
+            # if directory 
+            TRIM="${FILEPATH#./}"
+            # if (file path trimmed of leading ./) != . and 
+            # if (file path trimmed of leading ./) != ($1 or .)
+            if [ "$TRIM" != "." -a "$TRIM" != "${1-.}" ]; then
+                # print spacer and leader
+                formatleader "$FILEPATH"
+                echo -ne "$LEADER"
+            fi
+            # colorize
+            colorize "$FILEPATH" "d"
+            # print directory name
+            # if (file path trimmed of leading ./) != ($1 or .)
+            if [ "$TRIM" = "${1-.}" ]; then
+                # print directory name or .
+                HEAD=${1%/}
+                echo ${HEAD:-.}
+            else
+                # print directory trimmed of trailing /
+                echo ${FILEPATH##*/}
+            fi
+        fi
+
+        # reset terminal colors
+        echo -ne "\033[0m"
+    done
+
+    # correct (total # of dirs - head dir)
+    (( DIR_NUM-- )) 
+    echo
+    if [ $DIR_NUM -ne 1 ]; then
+        echo "$DIR_NUM directories, $FIL_NUM file(s)"
+    else
+        echo "$DIR_NUM directory, $FIL_NUM file(s)"
+    fi
+
+    # reset IFS
+    unset IFS
+}
+
+# check all params and send to egrep to match for help or ?
+echo "$@" | egrep "-help|--help|-\?|--\?" >/dev/null
+if [ $? -eq 0 ]; then
+    usage $0
+fi
+
+# check # of params is less than 3
+if [ $# -gt 2 ]; then
+    usage $0
+fi
+
+# walk the tree
+walktree $1 $2 
+
+exit 0;
