@@ -62,6 +62,7 @@ set hlsearch
 
 filetype plugin on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python compiler pylint
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -82,7 +83,6 @@ set mouse=a
 :highlight rightMargin term=bold ctermfg=blue guifg=blue
 :match rightMargin /.\%>80v/
 
-let g:pylint_onwrite = 0
 " Show trailing whitepace and spaces before a tab:
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
@@ -96,7 +96,9 @@ noremap <F5> :set nonumber!<CR>:set foldcolumn=0<CR>
 nnoremap <F2> :bn<CR>
 nnoremap <F3> :bp<CR>
 nnoremap <F4> :NERDTreeToggle<CR>
+" F6 is used by pep8
 let NERDTreeWinPos="right"
+let g:pylint_onwrite = 0
 
 filetype plugin indent on
 
