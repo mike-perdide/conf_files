@@ -3,7 +3,7 @@
 	name = Julien Miotte
 [core]
 	editor = vim
-	pager = most
+ #	pager = most
 [color]
 	diff = auto
 	pager = true
