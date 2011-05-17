@@ -402,7 +402,6 @@ autorun = true
 autorunApps =
 {
     "kmail",
-    "korganizer",
 }
 if autorun then
     for app = 1, #autorunApps do
