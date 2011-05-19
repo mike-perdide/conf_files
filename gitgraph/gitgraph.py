@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 from git import Repo
-import datetime
+from datetime import datetime
 
 repo = Repo(".")
 current_day = 0
@@ -13,22 +13,18 @@ summup = {}
 markers = ["#", "*", "/", "$", "="]
 
 authors_marker_mapping = {}
-print repo.commit_count()
 
-for commit in repo.commits(max_count=repo.commit_count()):
-    print dir(commit)
-    break
-
+for commit in repo.iter_commits():
     author = str(commit.author)
 
     if not authors_marker_mapping.has_key(author):
         marker = markers.pop()
         authors_marker_mapping[author] = marker
 
-    commit_date = commit.committed_date
-    new_day = commit_date.tm_mday
-    new_month = commit_date.tm_mon
-    new_year = commit_date.tm_year
+    commit_date = datetime.fromtimestamp(commit.authored_date)
+    new_day = commit_date.day
+    new_month = commit_date.month
+    new_year = commit_date.year
 
     if not summup.has_key(new_year):
         summup[new_year] = {}
@@ -44,6 +40,8 @@ for commit in repo.commits(max_count=repo.commit_count()):
         commits[author] = 1
     else:
         commits[author] += 1
+
+#    print new_day, new_month, new_year, commit.message.strip().split("\n")[0]
 
 
 years_ordered = summup.keys()
