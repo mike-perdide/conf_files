@@ -13,7 +13,7 @@
 !Xcursor.theme: neutral
 
 !!URxvt*font: -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
-Rxvt*font: xft:terminus-18:pixelsize=18
+Rxvt*font: xft:terminus-18:pixelsize=13
 !URxvt*boldFont: xft:Monaco:pixelsize=10
 
 URxvt.geometry: 80x25
