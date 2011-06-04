@@ -12,7 +12,10 @@ deploy(){
     if [ $is_installed ] && [ ! -L $2 ]
     then
         echo "$1 is installed, deploying $2"
-        rm -r $2
+        if [ -f $2 ]
+        then
+            rm -r $2
+        fi
         ln -s $3 $2
     fi
 }
