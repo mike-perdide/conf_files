@@ -20,5 +20,6 @@
 	delete-remote-branch = "!f() { git push origin :heads/$1; }; f"
 	oops = rebase -i HEAD~10
 	rock = !git stash && git pull --rebase && git push && git stash pop
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 [merge]
 	tool = vimdiff
