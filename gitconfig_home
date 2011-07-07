@@ -23,3 +23,5 @@
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 [merge]
 	tool = vimdiff
+[push]
+	default = upstream
