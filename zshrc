@@ -120,10 +120,13 @@ zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"
 function precmd {
     last_time=$cmd_time
     export cmd_time="$(date +"%s")"
-    last_took=$(expr $cmd_time - $last_time)
-    if [ $last_took -gt 5 ]
+    if [ x"$last_time" != x"" ]
     then
-        echo "Last command took: $last_took seconds"
+        last_took=$(expr $cmd_time - $last_time)
+        if [ $last_took -gt 5 ]
+        then
+            echo "Last command took: $last_took seconds"
+        fi
     fi
     vcs_info 'prompt'
 }
