@@ -269,4 +269,13 @@ settings = {
     nick = "mike_perdide";
   };
   "fe-text" = { actlist_sort = "refnum"; };
+  "fe-common/core" = { autolog = "yes"; };
 };
+logs = { };
+ignores = (
+  { level = "JOINS QUITS"; channels = ( "#afpy" ); },
+  { level = "JOINS QUITS"; channels = ( "#git" ); },
+  { level = "JOINS QUITS"; channels = ( "#python-fr" ); },
+  { level = "JOINS QUITS"; channels = ( "#distutils" ); },
+  { level = "JOINS QUITS"; channels = ( "#mageia-mentoring" ); }
+);
