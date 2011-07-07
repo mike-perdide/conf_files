@@ -118,6 +118,13 @@ zstyle ':vcs_info:*:prompt:*' formats       "//${FMT_BRANCH}"              "${FM
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""                             "%~"
 
 function precmd {
+    last_time=$cmd_time
+    export cmd_time="$(date +"%s")"
+    last_took=$(expr $cmd_time - $last_time)
+    if [ $last_took -gt 5 ]
+    then
+        echo "Last command took: $last_took seconds"
+    fi
     vcs_info 'prompt'
 }
 function lprompt {
@@ -172,6 +179,7 @@ rprompt '()' $BR_BRIGHT_BLACK $PR_GREEN
 
 setopt extended_glob
 preexec () {
+    export cmd_time="$(date +"%s")"
     echo $$ $USER $(history -1) >> ~/.eternal_history
 }
 
