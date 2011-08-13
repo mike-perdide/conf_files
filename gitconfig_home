@@ -24,4 +24,4 @@
 [merge]
 	tool = vimdiff
 [push]
-	default = upstream
+	default = tracking
