@@ -162,3 +162,8 @@ nnoremap <F10> :b <C-Z>
 "Hilight trailing whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+let g:loaded_matchparen=1
+
+"Cf syntax highlighting
+au BufRead,BufNewFile *.cf set ft=cf3
