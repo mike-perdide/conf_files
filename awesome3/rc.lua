@@ -16,7 +16,7 @@ require("debian.menu")
 beautiful.init("/home/mike/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "konsole"
 transp_terminal = "urxvt -tr"
 editor = os.getenv("EDITOR") or "editor"
 -- You should install privoxy to block adds
