@@ -6,7 +6,6 @@
  #	pager = most
 [color]
 	diff = auto
-	pager = true
 	ui = auto
 [alias]
 	pullrebase = pull --rebase
