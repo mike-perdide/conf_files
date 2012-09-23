@@ -81,7 +81,7 @@ set t_Co=256
 set mouse=a
 
 :highlight rightMargin term=bold ctermfg=blue guifg=blue
-:match rightMargin /.\%>80v/
+:match rightMargin /.\%>79v/
 
 " Show trailing whitepace and spaces before a tab:
 :autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
