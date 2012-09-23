@@ -4,7 +4,7 @@ finish
 endif
 let b:did_ftplugin = 1
 
-map <buffer> <S-e> :w<CR>:!/usr/bin/env python % <CR>
+map <buffer> <S-e> :w<CR>:!python ./% <CR>
 map <buffer> gd /def <C-R><C-W><CR> 
 
 hi ErrorMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=black ctermbg=yellow cterm=NONE
