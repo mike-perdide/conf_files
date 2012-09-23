@@ -73,6 +73,14 @@ then
     source $VIRTUALENV_SCRIPT
 fi
 
+# function to delete words, stopping at "/"
+slash-backward-kill-word() {
+    local WORDCHARS="${WORDCHARS:s@/@}"
+    zle backward-kill-word
+}
+zle -N slash-backward-kill-word
+bindkey '^w' slash-backward-kill-word
+
 # key bindings
 typeset -g -A key
 bindkey '^?' backward-delete-char
