@@ -58,8 +58,6 @@ alias la='l -ltha'
 
 alias -g L='|less'
 
-alias œ='cd -'
-
 alias goget='sudo apt-get install'
 alias gosrch='sudo aptitude search'
 alias gofile='sudo apt-file search'
