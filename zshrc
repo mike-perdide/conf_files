@@ -93,6 +93,8 @@ bindkey '^[[D' backward-char
 bindkey '^[[C' forward-char
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 
 setopt prompt_subst
 autoload colors
