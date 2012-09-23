@@ -76,7 +76,7 @@ set backspace=2
 " displayed.
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview 
+autocmd BufWinEnter *.* silent loadview
 set t_Co=256
 set mouse=a
 
