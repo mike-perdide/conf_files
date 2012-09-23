@@ -65,10 +65,12 @@ alias gofile='sudo apt-file search'
 # environment settings
 export PATH=$PATH:$HOME/opt
 
+# Virtualenvwrapper settings
 export WORKON_HOME=$HOME/.virtualenvs
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]
+VIRTUALENV_SCRIPT=/etc/bash_completion.d/virtualenvwrapper
+if [ -f $VIRTUALENV_SCRIPT ]
 then
-    source /usr/local/bin/virtualenvwrapper.sh
+    source $VIRTUALENV_SCRIPT
 fi
 
 # key bindings
