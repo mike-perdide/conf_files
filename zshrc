@@ -200,3 +200,8 @@ alias cf='cd ~/conffiles'
 
 export HGEDITOR=~/conffiles/hg/hgeditor
 # Local definitions
+
+if [ -f ~/.ssh/aliases ]
+then
+    . ~/.ssh/aliases
+fi
