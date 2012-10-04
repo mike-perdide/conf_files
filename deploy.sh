@@ -1,7 +1,7 @@
 SCRIPTS_DIR=$PWD
 
 check_installed(){
-    is_installed=$(dpkg -l|grep " $1 "|wc -l)
+    installed=$(dpkg -l 2>&1|grep "i\s*$1"|wc -l)
 }
 
 deploy(){
@@ -9,7 +9,7 @@ deploy(){
     # $2 is the destination of the script (e.g. ~/.vimrc)
     # $3 is the source of the script (e.g. ~/conffiles/vimrc)
     check_installed $1
-    if [ $is_installed ] && [ ! -L $2 ]
+    if [ $installed != 0 ] && [ ! -L $2 ]
     then
         echo "$1 is installed, deploying $2"
         if [ -f $2 ]
