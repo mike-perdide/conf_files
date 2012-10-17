@@ -196,6 +196,9 @@ preexec () {
     echo $$ $USER $(history -1) >> ~/.eternal_history
 }
 
+# Easy man access with <Esc>h
+autoload run-help
+
 alias cf='cd ~/conffiles'
 
 export HGEDITOR=~/conffiles/hg/hgeditor
