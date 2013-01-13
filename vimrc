@@ -39,14 +39,14 @@ syntax on
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
-"set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-set autowrite		" Automatically save before commands like :next and :make
-set hidden             " Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes) in terminals
+"set showcmd        " Show (partial) command in status line.
+set showmatch       " Show matching brackets.
+set ignorecase      " Do case insensitive matching
+"set smartcase      " Do smart case matching
+"set incsearch      " Incremental search
+set autowrite       " Automatically save before commands like :next and :make
+set hidden          " Hide buffers when they are abandoned
+"set mouse=a        " Enable mouse usage (all modes) in terminals
 
 " Source a global configuration file if available
 " XXX Deprecated, please move your changes here in /etc/vim/vimrc
@@ -80,16 +80,15 @@ autocmd BufWinEnter *.* silent loadview
 set t_Co=256
 set mouse=a
 
-:highlight rightMargin term=bold ctermfg=blue guifg=blue
-:match rightMargin /.\%>79v/
+highlight rightMargin term=bold ctermfg=blue guifg=blue
+"match rightMargin /.\%>79v/
 
 " Show trailing whitepace and spaces before a tab:
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 "set bg=dark
 
-" Turn on line numbers:
-set number
 " Toggle line numbers and fold column for easy copying:
 noremap <F5> :set nonumber!<CR>:set foldcolumn=0<CR>
 
@@ -102,7 +101,7 @@ let g:pylint_onwrite = 0
 
 filetype plugin indent on
 
-autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~/.file-log
+"autocmd BufWinEnter .* silent !echo "----\n"`who`"\n"read <afile> at `date` >> ~/.file-log
 
 inoremap <Esc>Oq 1
 inoremap <Esc>Or 2
@@ -152,18 +151,16 @@ noremap <Esc>OR *
 noremap <Esc>Ol +
 noremap <Esc>OS -
 
-:colorscheme ron
+colorscheme ron
 " delek, ron, slate, torte
 
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
 
-"Hilight trailing whitespace
-:highlight ExtraWhitespace ctermbg=red guibg=red
-:autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
-
 let g:loaded_matchparen=1
 
 "Cf syntax highlighting
 au BufRead,BufNewFile *.cf set ft=cf3
+
+noremap T O<ESC>
