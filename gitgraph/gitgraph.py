@@ -7,6 +7,7 @@ current_day = 0
 current_month = 0
 current_year = 0
 commits = {}
+count_commits = {}
 
 summup = {}
 
@@ -41,8 +42,12 @@ for commit in repo.iter_commits():
     else:
         commits[author] += 1
 
-#    print new_day, new_month, new_year, commit.message.strip().split("\n")[0]
+    if not count_commits.has_key(author):
+        count_commits[author] = 1
+    else:
+        count_commits[author] += 1
 
+#    print new_day, new_month, new_year, commit.message.strip().split("\n")[0]
 
 years_ordered = summup.keys()
 years_ordered.sort()
@@ -67,4 +72,4 @@ for year in years_ordered:
 
 print "====== Legend : ======"
 for author in authors_marker_mapping:
-    print author, authors_marker_mapping[author]
+    print author, authors_marker_mapping[author], count_commits[author]
