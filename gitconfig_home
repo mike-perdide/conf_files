@@ -20,6 +20,8 @@
 	oops = rebase -i HEAD~10
 	rock = !git stash && git pull --rebase && git push && git stash pop
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	prefix-remote-branch = "!f() { git push origin origin/$1:refs/heads/$2/$1; git push origin :refs/heads/$1; }; f"
+	show-cherry = "!f() { git cherry $1|grep -v '^+'|awk '{ print $2 }'|xargs git show; }; f"
 [merge]
 	tool = vimdiff
 [push]
