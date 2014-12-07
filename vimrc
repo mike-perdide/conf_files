@@ -139,8 +139,6 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplorerDebugLevel = 10
 
 " set listchars=tab:>\
-highlight NBSP ctermbg=red guibg=red
-execute pathogen#infect()
 
 au bufenter *.sls set filetype=yaml
 au bufenter *.sls set ts=2
