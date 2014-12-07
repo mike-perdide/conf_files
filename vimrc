@@ -139,3 +139,13 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplorerDebugLevel = 10
 
 " set listchars=tab:>\
+highlight NBSP ctermbg=red guibg=red
+execute pathogen#infect()
+
+au bufenter *.sls set filetype=yaml
+au bufenter *.sls set ts=2
+au bufenter *.sls set shiftwidth=2
+"
+" Show all nbsp in red
+highlight NBSP ctermbg=red guibg=red
+match NBSP / / 
