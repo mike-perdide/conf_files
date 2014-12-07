@@ -43,7 +43,7 @@ deploy xserver-xorg-core ~/.Xdefaults $SCRIPTS_DIR/Xdefaults
 is_installed_awesome=$(check_installed awesome)
 if [ $is_installed ]
 then
-    mkdir -p .config/awesome
+    mkdir -p ~/.config/awesome
 fi
 deploy awesome ~/.config/awesome/rc.lua $SCRIPTS_DIR/awesome3/rc.lua
 deploy awesome ~/.config/awesome/theme.lua $SCRIPTS_DIR/awesome3/theme.lua
