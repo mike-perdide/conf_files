@@ -40,8 +40,8 @@ deploy irssi ~/.irssi $SCRIPTS_DIR/irssi
 
 deploy xserver-xorg-core ~/.Xdefaults $SCRIPTS_DIR/Xdefaults
 
-is_installed_awesome=$(check_installed awesome)
-if [ $is_installed ]
+check_installed awesome
+if [ $installed != 0 ]
 then
     mkdir -p ~/.config/awesome
 fi
