@@ -4,9 +4,10 @@ finish
 endif
 let b:did_ftplugin = 1
 
-map <buffer> <S-e> :w<CR>:!python ./% <CR>
+map <buffer> <S-e> :w<CR>:!python % <CR>
 map <buffer> gd /def <C-R><C-W><CR> 
 
+set et sts=4 ts=4 sw=4
 hi ErrorMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=black ctermbg=yellow cterm=NONE
 hi WarningMsg guifg=white guibg=#FF6C60 gui=BOLD ctermfg=white ctermbg=blue cterm=NONE
 :au BufWinEnter * let w:m2=matchadd('WarningMsg', '\%>80v.\+', -1)
