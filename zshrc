@@ -60,7 +60,8 @@ alias -g L='|less'
 
 alias goget='sudo apt-get install'
 alias gosrch='sudo aptitude search'
-alias gofile='sudo apt-file search'
+alias gofile='apt-file search'
+alias purgepyc='rm **/*.pyc'
 
 # environment settings
 export PATH=$PATH:$HOME/opt
