@@ -19,7 +19,7 @@ syntax on
 "set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
+set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
@@ -36,7 +36,7 @@ set hlsearch
 filetype plugin on
 filetype plugin indent on
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=python3complete#Complete
 autocmd FileType python compiler pylint
 "autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 "autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -143,7 +143,76 @@ let g:miniBufExplorerDebugLevel = 10
 au bufenter *.sls set filetype=yaml
 au bufenter *.sls set ts=2
 au bufenter *.sls set shiftwidth=2
+
+au bufenter *.yml set filetype=yaml
+au bufenter *.yml set et
+au bufenter *.yml set ts=2
+au bufenter *.yml set sts=2
+au bufenter *.yml set sw=2
+
 "
 " Show all nbsp in red
 highlight NBSP ctermbg=red guibg=red
 match NBSP / / 
+
+
+au BufRead *.pt set filetype=xml
+au BufNewFile *.pt set filetype=xml
+
+au BufRead *.bat map <buffer> <S-e> :w<CR>:!wineconsole % <CR>
+
+au bufread *.sql set et
+au bufread *.sql set sts=4
+au bufread *.sql set ts=4
+au bufread *.sql set shiftwidth=4
+
+au bufread *.js set et
+au bufread *.js set sts=2
+au bufread *.js set ts=2
+au bufread *.js set shiftwidth=2
+
+au bufnewfile *.jinja2 set filetype=xml
+au bufread *.jinja2 set filetype=xml
+au bufread *.jinja2 set et
+au bufread *.jinja2 set sts=2
+au bufread *.jinja2 set ts=2
+au bufread *.jinja2 set shiftwidth=2
+
+au bufnewfile *.ts set filetype=javascript
+au bufread *.ts set filetype=javascript
+au bufread *.ts set et
+au bufread *.ts set sts=2
+au bufread *.ts set ts=2
+au bufread *.ts set shiftwidth=2
+
+au bufnewfile *.html set filetype=html
+au bufread *.html set filetype=html
+au bufread *.html set et
+au bufread *.html set sts=2
+au bufread *.html set ts=2
+au bufread *.html set shiftwidth=2
+
+au BufRead *.bat map <buffer> <S-e> :w<CR>:!node % <CR>
+au BufRead *.sql map <buffer> <S-e> :w<CR>:!psql -h 127.0.0.1 -U cadageo d_test -f %; echo insert on d_test <CR>
+
+call plug#begin('~/.vim/plugged')
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'davidhalter/jedi-vim'
+call plug#end()
+
+filetype plugin on
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+
+" Useful commands:
+" let i=12 | g/\[x\]/s//\='['.i.']'/ | let i=i+1 : replace every [x] with
+" incrementing value [12], [13], etc.
+" ga print hex value of char
+" imap <C-w> <C-[>diwi
+
+
