@@ -64,7 +64,7 @@ alias gofile='apt-file search'
 alias purgepyc='rm **/*.pyc'
 
 # environment settings
-export PATH=$PATH:$HOME/opt
+export PATH=$PATH:$HOME/opt:$HOME/.local/bin
 
 # Virtualenvwrapper settings
 export WORKON_HOME=$HOME/.virtualenvs
@@ -96,6 +96,7 @@ bindkey '^[OA' history-beginning-search-backward
 bindkey '^[OB' history-beginning-search-forward
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
+bindkey "^B" push-line-or-edit
 
 setopt prompt_subst
 autoload colors
@@ -194,7 +195,7 @@ rprompt '()' $BR_BRIGHT_BLACK $PR_GREEN
 setopt extended_glob
 preexec () {
     export cmd_time="$(date +"%s")"
-    echo $$ $USER $(history -1) >> ~/.eternal_history
+    echo $$ $(date) $(pwd) $USER $(history -1) >> ~/.eternal_history
 }
 
 # Easy man access with <Esc>h
