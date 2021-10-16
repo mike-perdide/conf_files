@@ -18,7 +18,7 @@ authors_marker_mapping = {}
 for commit in repo.iter_commits():
     author = str(commit.author)
 
-    if not authors_marker_mapping.has_key(author):
+    if not author in authors_marker_mapping:
         marker = markers.pop()
         authors_marker_mapping[author] = marker
 
@@ -27,37 +27,34 @@ for commit in repo.iter_commits():
     new_month = commit_date.month
     new_year = commit_date.year
 
-    if not summup.has_key(new_year):
+    if not new_year in summup:
         summup[new_year] = {}
 
-    if not summup[new_year].has_key(new_month):
+    if not new_month in summup[new_year]:
         summup[new_year][new_month] = {}
 
-    if not summup[new_year][new_month].has_key(new_day):
+    if not new_day in summup[new_year][new_month]:
         summup[new_year][new_month][new_day] = {}
 
     commits = summup[new_year][new_month][new_day]
-    if not commits.has_key(author):
+    if not author in commits:
         commits[author] = 1
     else:
         commits[author] += 1
 
-    if not count_commits.has_key(author):
+    if not author in count_commits:
         count_commits[author] = 1
     else:
         count_commits[author] += 1
 
 #    print new_day, new_month, new_year, commit.message.strip().split("\n")[0]
 
-years_ordered = summup.keys()
-years_ordered.sort()
-print years_ordered
+years_ordered = sorted(summup.keys())
+print(years_ordered)
 for year in years_ordered:
-    months_ordered = summup[year].keys()
-    months_ordered.sort()
+    months_ordered = sorted(summup[year].keys())
     for month in months_ordered:
-        days_ordered = summup[year][month].keys()
-        days_ordered.sort()
+        days_ordered = sorted(summup[year][month].keys())
         for day in days_ordered:
             s_day = "0%d" % day if day <10 else "%d" % day
             s_month = "0%d" % month if month <10 else "%d" % month
@@ -67,9 +64,9 @@ for year in years_ordered:
                 n_commits = summup[year][month][day][author]
                 full_line += authors_marker_mapping[author] * n_commits
                 total += n_commits
-            print full_line, total
-        print ""
+            print(full_line, total)
+        print("")
 
-print "====== Legend : ======"
+print("====== Legend : ======")
 for author in authors_marker_mapping:
-    print author, authors_marker_mapping[author], count_commits[author]
+    print(author, authors_marker_mapping[author], count_commits[author])
