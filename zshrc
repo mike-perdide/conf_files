@@ -63,6 +63,8 @@ alias gosrch='sudo aptitude search'
 alias gofile='apt-file search'
 alias purgepyc='rm **/*.pyc'
 
+alias vim=nvim
+
 # environment settings
 export PATH=$PATH:$HOME/opt:$HOME/.local/bin
 
@@ -97,6 +99,16 @@ bindkey '^[OB' history-beginning-search-forward
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 bindkey "^B" push-line-or-edit
+
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Emacs style
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+# Vi style:
+# zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line
 
 setopt prompt_subst
 autoload colors
@@ -210,3 +222,5 @@ if [ -f ~/.ssh/aliases ]
 then
     . ~/.ssh/aliases
 fi
+
+alias pretty_grep='function _get(){ echo -e "\033[0;32m--------------------------------------------------------------------\nRECHERCHE DE : $@\n--------------------------------------------------------------------\033[0m"; git -c color.grep.filename="bold yellow" -c color.grep.linenumber="cyan" grep -ni --break --heading --fixed-strings "$@" -- "./*" ":(exclude)*.map" ":(exclude)*.min.js" ":(exclude)*/static/js/build/*"; echo ""; echo ""; echo ""; };'
