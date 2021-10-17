@@ -12,8 +12,13 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 call plug#end()
 
+""""" Color scheme
 colorscheme onehalfdark
 let g:airline_theme='onehalfdark'
+" Fix folded highlighted
+hi Folded ctermbg=0
+" Fix coc-pyright popup
+hi FgCocErrorFloatBgCocFloating ctermfg=94 ctermbg=253
 
 let g:neomake_python_enabled_makers = ['flake8']
 
@@ -134,4 +139,7 @@ function! ReFold()
     set foldtext=PythonFoldText()
     echo 
 endfunction
+
+map <buffer> <S-e> :w<CR>:!python3 % <CR>
+map <buffer> gd /def <C-R><C-W><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
