@@ -63,8 +63,6 @@ alias gosrch='sudo aptitude search'
 alias gofile='apt-file search'
 alias purgepyc='rm **/*.pyc'
 
-alias vim=nvim
-
 # environment settings
 export PATH=$PATH:$HOME/opt:$HOME/.local/bin
 
