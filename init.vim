@@ -5,18 +5,16 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-
-"Plug 'davidhalter/jedi-vim'
-"Plug 'zchee/deoplete-jedi'
 Plug 'vim-airline/vim-airline'
 Plug 'nvie/vim-flake8'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+"Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
-"Plug 'tmhedberg/SimpylFold'
-
 call plug#end()
+
+" COC configuration
+"set cmdheight=2
+let g:coc_global_extensions = ['coc-yaml', 'coc-git', 'coc-pyright']
 
 """"" Color scheme
 colorscheme onehalfdark
@@ -26,6 +24,7 @@ hi Folded ctermbg=0
 " Fix coc-pyright popup
 hi FgCocErrorFloatBgCocFloating ctermfg=94 ctermbg=253
 
+"""""" python mode configuration
 let g:neomake_python_enabled_makers = ['flake8']
 
 " turn on rope
@@ -34,6 +33,9 @@ let g:pymode_rope = 1
 " turn on completion?
 let g:pymode_rope_completion = 1
 let g:pymode_rope_goto_definition_bind = "<\-d>"
+
+" Disable code running support
+let g:pymode_run = 0
 
 set completeopt=menu
 set showmatch
@@ -58,10 +60,6 @@ autocmd BufWinEnter *.* silent! loadview
 
 set tags=tags
 autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python&;
-
-" COC configuration
-"set cmdheight=2
-let g:coc_global_extensions = ['coc-yaml', 'coc-git', 'coc-pyright']
 
 
 """"""""""""""""""""""""""""""""""""""""""" Python folding
