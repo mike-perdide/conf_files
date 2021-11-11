@@ -597,3 +597,9 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+awful.util.spawn("nm-applet")
+awful.util.spawn("fdpowermon")
+awful.util.spawn("xscreensaver")
+awful.util.spawn("setxkbmap fr")
+awful.util.spawn("synergyc 192.168.250.3")
