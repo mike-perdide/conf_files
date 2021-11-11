@@ -68,7 +68,7 @@ export PATH=$PATH:$HOME/opt:$HOME/.local/bin
 
 # Virtualenvwrapper settings
 export WORKON_HOME=$HOME/.virtualenvs
-VIRTUALENV_SCRIPT=/etc/bash_completion.d/virtualenvwrapper
+VIRTUALENV_SCRIPT=/usr/share/bash-completion/completions/virtualenvwrapper
 if [ -f $VIRTUALENV_SCRIPT ]
 then
     source $VIRTUALENV_SCRIPT
