@@ -226,3 +226,6 @@ then
 fi
 
 alias pretty_grep='function _get(){ echo -e "\033[0;32m--------------------------------------------------------------------\nRECHERCHE DE : $@\n--------------------------------------------------------------------\033[0m"; git -c color.grep.filename="bold yellow" -c color.grep.linenumber="cyan" grep -ni --break --heading --fixed-strings "$@" -- "./*" ":(exclude)*.map" ":(exclude)*.min.js" ":(exclude)*/static/js/build/*"; echo ""; echo ""; echo ""; };'
+
+export DOCKER_BUILDKIT=1
+source <(kubectl completion zsh)
