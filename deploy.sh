@@ -41,6 +41,7 @@ deploy irssi ~/.irssi $SCRIPTS_DIR/irssi
 deploy xserver-xorg-core ~/.Xdefaults $SCRIPTS_DIR/Xdefaults
 
 deploy neovim ~/.config/nvim/init.vim $SCRIPTS_DIR/init.vim
+deploy tig ~/.tigrc $SCRIPTS_DIR/tigrc
 
 check_installed awesome
 if [ $installed != 0 ]
