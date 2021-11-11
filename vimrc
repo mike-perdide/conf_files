@@ -63,6 +63,9 @@ autocmd BufWinEnter *.* silent! loadview
 set tags=tags
 autocmd BufWritePost *.py silent! !ctags -R --python-kinds=-i --languages=python&;
 
+filetype plugin on
+filetype plugin indent on
+
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 noremap <silent> <Space> :silent noh<Bar>echo<CR>
@@ -70,6 +73,9 @@ noremap <silent> <Space> :silent noh<Bar>echo<CR>
 " Highlight chars > 79c in python files
 autocmd BufWinEnter *.py silent! highlight rightMargin term=bold ctermfg=blue guifg=blue
 autocmd BufWinEnter *.py silent! match rightMargin /.\%>79v/
+
+" Jenkinsfile syntax configuration
+autocmd BufNewFile,BufRead Jenkinsfile setfiletype groovy
 
 "Hilight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
